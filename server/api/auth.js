@@ -6,7 +6,8 @@ const db = require('../db');
 const { signToken } = require('../utils/jwt');
 
 const router = express.Router();
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resendKey = process.env.RESEND_API_KEY || '';
+const resend = resendKey ? new Resend(resendKey) : null;
 
 const setAuthCookie = (res, token) => {
   const isProd = process.env.NODE_ENV === 'production';
@@ -46,11 +47,13 @@ router.post('/signup', async (req, res) => {
     const token = signToken({ id: user.id, email: user.email, name: user.name });
     setAuthCookie(res, token);
 
-    // Send welcome email
-    if (process.env.RESEND_API_KEY) {
+    // Send welcome email (optional, only if API key configured)
+    if (resend) {
       try {
-        await resend.emails.send({
-          from: 'onboarding@resend.dev',
+        const from = process.env.RESEND_FROM || 'onboarding@resend.dev';
+        const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5173';
+        const { id } = await resend.emails.send({
+          from,
           to: email,
           subject: 'Welcome to Entrepreneurship Network! 🚀',
           html: `
@@ -85,7 +88,7 @@ router.post('/signup', async (req, res) => {
                       <li>Career Growth & Mentorship</li>
                     </ul>
                     <p><strong>Ready to start your internship search?</strong></p>
-                    <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:5173'}/internships" class="button">Browse Internships</a>
+                    <a href="${appUrl}/internships" class="button">Browse Internships</a>
                     <p style="margin-top: 30px;">If you have any questions, feel free to reach out to our support team.</p>
                     <p>Best regards,<br>The Entrepreneurship Network Team</p>
                   </div>
@@ -97,9 +100,14 @@ router.post('/signup', async (req, res) => {
             </html>
           `
         });
+        if (!id) {
+          console.warn('Resend did not return an email id (check domain verification and API key)');
+        }
       } catch (e) {
         console.warn('Resend email failed:', e?.message);
       }
+    } else {
+      console.warn('RESEND_API_KEY not configured, skipping welcome email');
     }
 
     return res.status(201).json({ user });
