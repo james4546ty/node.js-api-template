@@ -16,7 +16,11 @@ export default function Navbar() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-colors ${solid ? 'bg-white shadow' : 'bg-transparent'}`}>
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-primary-dark flex items-center justify-center text-white font-bold">∞</div>
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-8 h-8 rounded"
+          />
           <span className="font-heading font-semibold">Entrepreneurship Network</span>
         </Link>
 
