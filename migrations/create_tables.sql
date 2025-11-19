@@ -1,0 +1,26 @@
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS internships (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  skills_required TEXT NOT NULL,
+  description TEXT NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Optional: track application clicks
+CREATE TABLE IF NOT EXISTS application_clicks (
+  id SERIAL PRIMARY KEY,
+  internship_id INT REFERENCES internships(id) ON DELETE CASCADE,
+  email VARCHAR(255),
+  clicked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
