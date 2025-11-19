@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   const [visible, setVisible] = useState(false)
@@ -28,9 +29,9 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between text-sm text-gray-600">
         <span>© {new Date().getFullYear()} Entrepreneurship Network</span>
         <div className="flex items-center gap-4">
-          <a href="#about" className="hover:text-primary">About</a>
-          <a href="#contact" className="hover:text-primary">Contact</a>
-          <a href="/" className="hover:text-primary">Home</a>
+          <Link to="/about" className="hover:text-primary">About</Link>
+          <Link to="/contact" className="hover:text-primary">Contact</Link>
+          <Link to="/" className="hover:text-primary">Home</Link>
         </div>
       </div>
     </footer>
