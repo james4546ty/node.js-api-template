@@ -56,26 +56,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-5xl px-4 space-y-6 py-12">
-        <h2 className="text-3xl font-heading font-semibold">About Entrepreneurship Network</h2>
-        <p className="text-gray-700">Our mission is to connect young talent with industry-leading internship opportunities.</p>
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="p-4 rounded bg-white shadow" data-aos="fade-up">
-            <h3 className="font-semibold">Mission</h3>
+      <section id="about" className="mx-auto max-w-6xl px-4 space-y-8 py-20">
+        <h2 className="text-4xl md:text-5xl font-heading font-semibold">About Entrepreneurship Network</h2>
+        <p className="text-lg md:text-xl text-gray-700">Our mission is to connect young talent with industry-leading internship opportunities.</p>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="p-6 rounded bg-white shadow" data-aos="fade-up">
+            <h3 className="text-lg font-semibold">Mission</h3>
             <p className="text-sm text-gray-600">Empower students with real-world experience.</p>
           </div>
-          <div className="p-4 rounded bg-white shadow" data-aos="fade-up" data-aos-delay="150">
-            <h3 className="font-semibold">Vision</h3>
+          <div className="p-6 rounded bg-white shadow" data-aos="fade-up" data-aos-delay="150">
+            <h3 className="text-lg font-semibold">Vision</h3>
             <p className="text-sm text-gray-600">A world where every student has access to growth opportunities.</p>
           </div>
-          <div className="p-4 rounded bg-white shadow" data-aos="fade-up" data-aos-delay="300">
-            <h3 className="font-semibold">Impact</h3>
+          <div className="p-6 rounded bg-white shadow" data-aos="fade-up" data-aos-delay="300">
+            <h3 className="text-lg font-semibold">Impact</h3>
             <p className="text-sm text-gray-600">1000+ interns placed across 24+ programs.</p>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-3xl px-4 py-12">
+      <section id="contact" className="mx-auto max-w-3xl px-4 py-16">
         <h2 className="text-3xl font-heading font-semibold mb-4">Contact Us</h2>
         <p className="text-gray-700 mb-4">Have questions? Fill out the form and our team will get back to you.</p>
         <form className="space-y-3">

@@ -25,9 +25,9 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">
-          <a href="/" className="hover:text-primary">Home</a>
-          <a href="#about" className="hover:text-primary">About</a>
-          <a href="#contact" className="hover:text-primary">Contact Us</a>
+          <Link to="/" className="hover:text-primary">Home</Link>
+          <Link to="/about" className="hover:text-primary">About</Link>
+          <Link to="/contact" className="hover:text-primary">Contact Us</Link>
           <Link to="/signin" className="px-4 py-2 rounded border hover:bg-gray-100">Sign In</Link>
           <Link to="/signup" className="px-4 py-2 rounded bg-gradient-main text-white">Get Started</Link>
         </nav>
@@ -40,9 +40,9 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden bg-white border-t">
           <div className="px-4 py-2 flex flex-col gap-2">
-            <a href="/" onClick={() => setOpen(false)}>Home</a>
-            <a href="#about" onClick={() => setOpen(false)}>About</a>
-            <a href="#contact" onClick={() => setOpen(false)}>Contact Us</a>
+            <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+            <Link to="/about" onClick={() => setOpen(false)}>About</Link>
+            <Link to="/contact" onClick={() => setOpen(false)}>Contact Us</Link>
             <Link to="/signin" onClick={() => setOpen(false)} className="px-4 py-2 rounded border">Sign In</Link>
             <Link to="/signup" onClick={() => setOpen(false)} className="px-4 py-2 rounded bg-gradient-main text-white">Get Started</Link>
           </div>
